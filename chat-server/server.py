@@ -8,7 +8,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'iboror_chat_secret'
-socketio = SocketIO(app, cors_allowed_origins="*", max_http_buffer_size=10_000_000)
+socketio = SocketIO(app, cors_allowed_origins="*", max_http_buffer_size=10_000_000, async_mode='gevent')
 
 users = {}  # sid -> username
 messages = []  # son 50 mesajı sakla
