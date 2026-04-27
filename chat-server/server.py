@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import base64
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'iboror_chat_secret'
