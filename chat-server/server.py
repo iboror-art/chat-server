@@ -1,3 +1,6 @@
+from gevent import monkey
+monkey.patch_all()
+
 from flask import Flask, request
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import base64
@@ -50,7 +53,7 @@ def on_image(data):
     if len(messages) > 200:
         messages.pop(0)
     emit('message', msg, broadcast=True)
-
+    
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    socketio.run(app, host='0.0.0.0', port=port)
+    socketio.run(app, host='0.0.0.0', port=port, async_mode='gevent')
